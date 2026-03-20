@@ -1,4 +1,5 @@
 ﻿Public Class Form1
+    Dim formato As Boolean = True
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Timer1.Start()
         Timer2.Start()
@@ -7,13 +8,23 @@
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Dim date_o = DateTime.Now.ToString("dd 'de' MMMM 'del' yyyy")
         Dim day_o = DateTime.Now.ToString("dddd")
-        Dim time_o = DateTime.Now.ToString("HH:mm")
 
-        Dim time_mod = time_o.Split(":")
+        Dim time_o
+        'formato de 24 horas
+        If formato = True Then
+            time_o = DateTime.Now.ToString("HH:mm:ss")
+
+        ElseIf formato = False Then
+            time_o = DateTime.Now.ToString("hh:mm:ss")
+
+        End If
+
+        Dim time_mod = time_o.split(":")
         Fecha.Text = date_o.ToString()
         Dia.Text = day_o.ToString()
         Horas.Text = time_mod(0)
         Minutos.Text = time_mod(1)
+        segundos.Text = time_mod(2)
     End Sub
 
     Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
@@ -31,4 +42,55 @@
             Panel1.Visible = False
         End If
     End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+        Dim color_texto As String = ComboBox1.SelectedItem.ToString
+        If color_texto = "Verde" Then
+            Fecha.ForeColor = Color.GreenYellow
+            Dia.ForeColor = Color.GreenYellow
+            Horas.ForeColor = Color.GreenYellow
+            Minutos.ForeColor = Color.GreenYellow
+            Label1.ForeColor = Color.GreenYellow
+            Label2.ForeColor = Color.GreenYellow
+            segundos.ForeColor = Color.GreenYellow
+        ElseIf color_texto = "Blanco" Then
+            Fecha.ForeColor = Color.White
+            Dia.ForeColor = Color.White
+            Horas.ForeColor = Color.White
+            Minutos.ForeColor = Color.White
+            Label1.ForeColor = Color.White
+            Label2.ForeColor = Color.White
+            segundos.ForeColor = Color.White
+        ElseIf color_texto = "Turqueza" Then
+            Fecha.ForeColor = Color.Turquoise
+            Dia.ForeColor = Color.Turquoise
+            Horas.ForeColor = Color.Turquoise
+            Minutos.ForeColor = Color.Turquoise
+            Label1.ForeColor = Color.Turquoise
+            Label2.ForeColor = Color.Turquoise
+            segundos.ForeColor = Color.Turquoise
+        ElseIf color_texto = "Amarillo" Then
+            Fecha.ForeColor = Color.Gold
+            Dia.ForeColor = Color.Gold
+            Horas.ForeColor = Color.Gold
+            Minutos.ForeColor = Color.Gold
+            Label1.ForeColor = Color.Gold
+            Label2.ForeColor = Color.Gold
+            segundos.ForeColor = Color.Gold
+        End If
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If formato = True Then
+            Button1.Text = "12h"
+            formato = False
+
+        ElseIf formato = False Then
+            Button1.Text = "24h"
+            formato = True
+        End If
+    End Sub
+
+
 End Class

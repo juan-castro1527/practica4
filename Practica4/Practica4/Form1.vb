@@ -1,5 +1,7 @@
 ﻿Public Class Form1
     Dim formato As Boolean = True
+    Dim start As Boolean = False
+    Dim tiempo_crono As Integer = 0
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Timer1.Start()
         Timer2.Start()
@@ -9,7 +11,7 @@
         Dim date_o = DateTime.Now.ToString("dd 'de' MMMM 'del' yyyy")
         Dim day_o = DateTime.Now.ToString("dddd")
 
-        Dim time_o
+        Dim time_o = ""
         'formato de 24 horas
         If formato = True Then
             time_o = DateTime.Now.ToString("HH:mm:ss")
@@ -36,10 +38,10 @@
     End Sub
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
-        If Panel1.Visible = False Then
-            Panel1.Visible = True
-        ElseIf Panel1.Visible = True Then
-            Panel1.Visible = False
+        If Panel2.Visible = False Then
+            Panel2.Visible = True
+        ElseIf Panel2.Visible = True Then
+            Panel2.Visible = False
         End If
     End Sub
 
@@ -92,5 +94,34 @@
         End If
     End Sub
 
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        If start = False Then
+            Timer3.Enabled = True
+            start = True
+            Button2.Text = "Stop"
+        ElseIf start = True Then
+            Timer3.Enabled = False
+            start = False
+            Button2.Text = "Start"
+        End If
+    End Sub
 
+    Private Sub Resetb_Click(sender As Object, e As EventArgs) Handles Resetb.Click
+        tiempo_crono = 0
+        Timer3.Enabled = False
+        Label4.Text = 0
+    End Sub
+
+    Private Sub Timer3_Tick(sender As Object, e As EventArgs) Handles Timer3.Tick
+        tiempo_crono = tiempo_crono + 1
+        Label4.Text = tiempo_crono.ToString()
+    End Sub
+
+    Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
+        If Panel1.Visible = False Then
+            Panel1.Visible = True
+        ElseIf Panel1.Visible = True Then
+            Panel1.Visible = False
+        End If
+    End Sub
 End Class

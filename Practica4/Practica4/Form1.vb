@@ -2,6 +2,7 @@
     Dim formato As Boolean = True
     Dim start As Boolean = False
     Dim tiempo_crono As Integer = 0
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Timer1.Start()
         Timer2.Start()
@@ -55,6 +56,8 @@
             Label1.ForeColor = Color.GreenYellow
             Label2.ForeColor = Color.GreenYellow
             segundos.ForeColor = Color.GreenYellow
+            Label3.ForeColor = Color.GreenYellow
+            Label4.ForeColor = Color.GreenYellow
         ElseIf color_texto = "Blanco" Then
             Fecha.ForeColor = Color.White
             Dia.ForeColor = Color.White
@@ -63,6 +66,8 @@
             Label1.ForeColor = Color.White
             Label2.ForeColor = Color.White
             segundos.ForeColor = Color.White
+            Label3.ForeColor = Color.White
+            Label4.ForeColor = Color.White
         ElseIf color_texto = "Turqueza" Then
             Fecha.ForeColor = Color.Turquoise
             Dia.ForeColor = Color.Turquoise
@@ -71,6 +76,8 @@
             Label1.ForeColor = Color.Turquoise
             Label2.ForeColor = Color.Turquoise
             segundos.ForeColor = Color.Turquoise
+            Label4.ForeColor = Color.Turquoise
+            Label3.ForeColor = Color.Turquoise
         ElseIf color_texto = "Amarillo" Then
             Fecha.ForeColor = Color.Gold
             Dia.ForeColor = Color.Gold
@@ -79,6 +86,9 @@
             Label1.ForeColor = Color.Gold
             Label2.ForeColor = Color.Gold
             segundos.ForeColor = Color.Gold
+            Label4.ForeColor = Color.Gold
+            Label3.ForeColor = Color.Gold
+
         End If
 
     End Sub
@@ -94,27 +104,37 @@
         End If
     End Sub
 
+    Private startTime As DateTime
+    Private elapsed As TimeSpan = TimeSpan.Zero
+
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         If start = False Then
             Timer3.Enabled = True
             start = True
             Button2.Text = "Stop"
+            startTime = DateTime.Now
+
         ElseIf start = True Then
             Timer3.Enabled = False
             start = False
             Button2.Text = "Start"
+            elapsed += DateTime.Now - startTime
         End If
     End Sub
 
     Private Sub Resetb_Click(sender As Object, e As EventArgs) Handles Resetb.Click
-        tiempo_crono = 0
+        elapsed = TimeSpan.Zero
+        Button2.Text = "Start"
         Timer3.Enabled = False
-        Label4.Text = 0
+        Label4.Text = "00:00:00:00"
+        start = False
     End Sub
 
     Private Sub Timer3_Tick(sender As Object, e As EventArgs) Handles Timer3.Tick
-        tiempo_crono = tiempo_crono + 1
-        Label4.Text = tiempo_crono.ToString()
+        Dim curremt = elapsed + (DateTime.Now - startTime)
+        Label4.Text = curremt.ToString("hh\:mm\:ss\.ff")
+
+
     End Sub
 
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
@@ -122,6 +142,14 @@
             Panel1.Visible = True
         ElseIf Panel1.Visible = True Then
             Panel1.Visible = False
+        End If
+    End Sub
+
+    Private Sub PictureBox4_Click(sender As Object, e As EventArgs) Handles PictureBox4.Click
+        If Panel3.Visible = True Then
+            Panel3.Visible = False
+        ElseIf Panel3.Visible = False Then
+            Panel3.Visible = True
         End If
     End Sub
 End Class

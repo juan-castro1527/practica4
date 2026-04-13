@@ -33,6 +33,7 @@ Partial Class Form1
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Resetb = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -44,18 +45,20 @@ Partial Class Form1
         Me.segundos = New System.Windows.Forms.Label()
         Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Button5 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Timer4 = New System.Windows.Forms.Timer(Me.components)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
@@ -152,6 +155,14 @@ Partial Class Form1
         Me.Panel1.TabIndex = 6
         Me.Panel1.Visible = False
         '
+        'PictureBox3
+        '
+        Me.PictureBox3.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(100, 50)
+        Me.PictureBox3.TabIndex = 4
+        Me.PictureBox3.TabStop = False
+        '
         'Label4
         '
         Me.Label4.AutoSize = True
@@ -239,7 +250,7 @@ Partial Class Form1
         Me.segundos.BackColor = System.Drawing.Color.Transparent
         Me.segundos.Font = New System.Drawing.Font("Agency FB", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.segundos.ForeColor = System.Drawing.Color.GreenYellow
-        Me.segundos.Location = New System.Drawing.Point(454, 101)
+        Me.segundos.Location = New System.Drawing.Point(427, 101)
         Me.segundos.Name = "segundos"
         Me.segundos.Size = New System.Drawing.Size(39, 35)
         Me.segundos.TabIndex = 7
@@ -261,14 +272,6 @@ Partial Class Form1
         Me.PictureBox2.TabIndex = 8
         Me.PictureBox2.TabStop = False
         '
-        'PictureBox3
-        '
-        Me.PictureBox3.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(100, 50)
-        Me.PictureBox3.TabIndex = 4
-        Me.PictureBox3.TabStop = False
-        '
         'PictureBox4
         '
         Me.PictureBox4.BackColor = System.Drawing.Color.Transparent
@@ -283,6 +286,8 @@ Partial Class Form1
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(74, Byte), Integer))
+        Me.Panel3.Controls.Add(Me.Button6)
+        Me.Panel3.Controls.Add(Me.Button5)
         Me.Panel3.Controls.Add(Me.Button3)
         Me.Panel3.Controls.Add(Me.Button4)
         Me.Panel3.Controls.Add(Me.Label6)
@@ -292,16 +297,41 @@ Partial Class Form1
         Me.Panel3.Size = New System.Drawing.Size(446, 195)
         Me.Panel3.TabIndex = 10
         '
-        'Label5
+        'Button6
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Agency FB", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.Color.GreenYellow
-        Me.Label5.Location = New System.Drawing.Point(135, 18)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(244, 59)
-        Me.Label5.TabIndex = 5
-        Me.Label5.Text = "Temporizador"
+        Me.Button6.Location = New System.Drawing.Point(263, 156)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(75, 23)
+        Me.Button6.TabIndex = 8
+        Me.Button6.Text = "Start"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(159, 156)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(75, 23)
+        Me.Button5.TabIndex = 7
+        Me.Button5.Text = "1:00"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(368, 156)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 23)
+        Me.Button3.TabIndex = 6
+        Me.Button3.Text = "Reset"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(50, 156)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(75, 23)
+        Me.Button4.TabIndex = 5
+        Me.Button4.Text = "5:00"
+        Me.Button4.UseVisualStyleBackColor = True
         '
         'Label6
         '
@@ -314,23 +344,19 @@ Partial Class Form1
         Me.Label6.TabIndex = 5
         Me.Label6.Text = "00:00"
         '
-        'Button3
+        'Label5
         '
-        Me.Button3.Location = New System.Drawing.Point(304, 156)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 23)
-        Me.Button3.TabIndex = 6
-        Me.Button3.Text = "Reset"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Agency FB", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.GreenYellow
+        Me.Label5.Location = New System.Drawing.Point(135, 18)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(244, 59)
+        Me.Label5.TabIndex = 5
+        Me.Label5.Text = "Temporizador"
         '
-        'Button4
+        'Timer4
         '
-        Me.Button4.Location = New System.Drawing.Point(131, 156)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 23)
-        Me.Button4.TabIndex = 5
-        Me.Button4.Text = "5:00"
-        Me.Button4.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -339,6 +365,7 @@ Partial Class Form1
         Me.BackColor = System.Drawing.Color.White
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.ClientSize = New System.Drawing.Size(1102, 796)
+        Me.Controls.Add(Me.segundos)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.PictureBox4)
         Me.Controls.Add(Me.PictureBox2)
@@ -347,19 +374,18 @@ Partial Class Form1
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Fecha)
         Me.Controls.Add(Me.Dia)
-        Me.Controls.Add(Me.Horas)
         Me.Controls.Add(Me.Minutos)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.segundos)
+        Me.Controls.Add(Me.Horas)
         Me.Name = "Form1"
         Me.Text = "Reloj digital"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
@@ -395,4 +421,7 @@ Partial Class Form1
     Friend WithEvents Button4 As Button
     Friend WithEvents Label6 As Label
     Friend WithEvents Label5 As Label
+    Friend WithEvents Button6 As Button
+    Friend WithEvents Button5 As Button
+    Friend WithEvents Timer4 As Timer
 End Class
